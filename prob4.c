@@ -3,108 +3,85 @@ Written by S. M. Redwan
 ID: 221-35-828 */
 
 #include <stdio.h>
-#include <math.h>
-#include <windows.h>
+#include <stdbool.h>
 
 int main() {
-    int input, i;
+    while(true) {
+         int inpt;
 
-    system("cls");
+         printf("Choice one option from below:\n");
+         printf("\t1. Factorial\n");
+         printf("\t2. Prime or not\n");
+         printf("\t3. Odd or even\n");
+         printf("\t4. Exit\n");
+         scanf("%d", &inpt);
 
-    printf("\tPlease choice a option from below: \n\n");
-    printf("\t\t1. Fibonacci of a number\n");
-    printf("\t\t2. Prime or not\n");
-    printf("\t\t3. Odd or even\n");
-    printf("\t\t4. Exit\n");
-    scanf("%d", &input);
+         switch(inpt) {
+            case 1:
+                printf("------Factorial-------\n");
 
-    switch(input) {
-        case 1:
-            system("cls");
-            printf("--------------Fibonacci------------\n");
-            int n, first, second, fibo;
+                int num, fact, i;
+                fact = 1;
 
-            printf("Enter how many number you want to watch: ");
-            scanf("%d", &n);
+                printf("Enter number: ");
+                scanf("%d", &num);
 
-            printf("Enter first number of your fibonacci seris: ");
-            scanf("%d", &first);
-            printf("Enter second number of you fibonacci series: ");
-            scanf("%d", &second);
-
-            fibo = 0;
-
-            printf("%d %d ", first, second);
-
-            for(i = 1; i < (n - 1); i++) {
-                fibo = first + second;
-
-                first = second;
-                second = fibo;
-
-                printf("%d ", fibo);
-            }
-            break;
-
-        case 2:
-            system("cls");
-            printf("-------------Prime or not----------\n");
-
-            int num, i, root, flag;
-
-            flag = 1;
-
-            printf("Enter your test number: ");
-            scanf("%d", &num);
-
-            if(num == 0) {
-                printf("%d is prime\n", num);
-                return 0;
-            }
-            else if(num % 2 == 0) {
-                printf("%d is not prime\n", num);
-                return 0;
-            }
-
-            root = sqrt(num);
-
-            for(i = 3; i <= root; i += 2) {
-                if (num % i == 0) {
-                    flag = 0;
+                for(i = 1; i <= num; i++) {
+                    fact *= i;
                 }
-            }
-
-            if(flag) {
-                printf("%d is prime\n", num);
-            }
-            else {
-                printf("%d is not prime\n", num);
-            }
-            
+                printf("Factorial is: %d\n\n\n", fact);
             break;
 
-        case 3:
-            system("cls");
-            printf("------------Odd or Even-----------\n");
+            case 2:
+                printf("------Prime or not------\n");
 
-            int test_number;
+                int test_num, flag;
 
-            printf("Enter your test number here: ");
-            scanf("%d", &test_number);
+                printf("Enter Number to test: ");
+                scanf("%d", &test_num);
 
-            if(test_number % 2 == 0) {
-                printf("%d is even number\n", test_number);
-            }
-            else {
-                printf("%d is odd number\n", test_number);
-            }
+                flag = true;
 
+                for(i = 2; i < test_num; i++){
+                    if(test_num % i == 0) {
+                        flag = false;
+                    }
+                }
+                
+                if(flag == true) {
+                    printf("%d is prime number\n", test_num);
+                }
+                else {
+                    printf("%d is not prime number\n\n\n");
+                }
             break;
+
+            case 3:
+                printf("------Odd or even------\n");
             
-        default:
-            printf("_ _ _ _ _ _ _ _Exit_ _ _ _ _ _ _ _ _ _ \n\n");
-            
+                printf("Enter a number to test: ") ;
+                scanf("%d", &test_num);
+
+                if(test_num % 2 == false) {
+                    printf("%d is even number\n\n\n", test_num);
+                }
+                else {
+                    printf("%d is odd number\n\n\n", test_num);
+                }
+            break;
+
+            case 4:
+                printf("Thank you for using our software\n");
+
+                return 0;
+            break;
+
+            default:
+                printf("Invalid!!! Enter right option\n\n\n");
+            break;
+         }
     }
+    
 
     return 0;
 }
